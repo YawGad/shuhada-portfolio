@@ -10,7 +10,7 @@ import misgsOutreachMap from "../assets/projects/misgs-outreach-map.png";
 import hijabiStudent from "../assets/images/hijabi-student.png";
 import { Link } from "react-router-dom";
 
-function App() {
+function Home() {
   const dataSkills = [
     "Python",
     "Machine Learning",
@@ -28,16 +28,61 @@ function App() {
 
   const tools = ["MySQL", "Supabase", "GitHub"];
 
+  // Smooth scrolling for GitHub Pages
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <div className="app">
       <nav className="navbar">
-        <div className="logo">SHUHADA.</div>
+        <button
+          type="button"
+          className="logo logo-button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          SHUHADA.
+        </button>
 
         <div className="nav-links">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+          <button
+            type="button"
+            onClick={() => scrollToSection("about")}
+            className="nav-link-button"
+          >
+            About
+          </button>
+
+          <button
+            type="button"
+            onClick={() => scrollToSection("skills")}
+            className="nav-link-button"
+          >
+            Skills
+          </button>
+
+          <button
+            type="button"
+            onClick={() => scrollToSection("projects")}
+            className="nav-link-button"
+          >
+            Projects
+          </button>
+
+          <button
+            type="button"
+            onClick={() => scrollToSection("contact")}
+            className="nav-link-button"
+          >
+            Contact
+          </button>
         </div>
       </nav>
 
@@ -58,13 +103,17 @@ function App() {
               and mobile application development.
             </p>
 
-            <div className="hero-buttons">
-              <a href="#projects" className="primary-btn">
+           <div className="hero-buttons">
+              <button
+                type="button"
+                className="primary-btn"
+                onClick={() => scrollToSection("projects")}
+              >
                 Explore My Work →
-              </a>
+              </button>
 
               <a
-                href="/resume-shuhada-shamsuri.pdf"
+                href={`${import.meta.env.BASE_URL}resume-shuhada-shamsuri.pdf`}
                 className="secondary-btn"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -72,9 +121,13 @@ function App() {
                 View Resume
               </a>
 
-              <a href="#contact" className="secondary-btn">
+              <button
+                type="button"
+                className="secondary-btn"
+                onClick={() => scrollToSection("contact")}
+              >
                 Contact Me
-              </a>
+              </button>
             </div>
           </div>
 
@@ -262,7 +315,7 @@ function App() {
                   />
                   <img
                     src={misgsOutreachMap}
-                    alt="MISGS system homepage"
+                    alt="MISGS outreach map"
                     className="project-image"
                   />
                 </div>
@@ -420,11 +473,17 @@ function App() {
         <footer className="footer">
           <p>© 2026 Shuhada Shamsuri</p>
 
-          <p>Built with React</p>
+          <button
+            type="button"
+            className="footer-top-button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            Back to top ↑
+          </button>
         </footer>
       </main>
     </div>
   );
 }
 
-export default App;
+export default Home;

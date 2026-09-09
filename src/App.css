@@ -43,42 +43,34 @@ section {
   color: #17211f;
 }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 34px;
-}
+.nav-link-button {
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0;
 
-.nav-links a {
-  position: relative;
-
-  font-size: 14px;
+  font-family: inherit;
+  font-size: 13px;
   font-weight: 500;
-  color: #4f5755;
 
-  transition: color 0.2s ease;
+  color: #59625f;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.nav-links a::after {
-  content: "";
-  position: absolute;
-
-  left: 0;
-  bottom: -6px;
-
-  width: 0;
-  height: 1px;
-
-  background: #204f46;
-  transition: width 0.25s ease;
+.nav-link-button:hover {
+  color: #234f46;
+  transform: translateY(-1px);
 }
 
-.nav-links a:hover {
-  color: #204f46;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
+.nav-link-button:focus-visible {
+  outline: 2px solid #234f46;
+  outline-offset: 5px;
+  border-radius: 2px;
 }
 
 /* ========================================
@@ -1671,3 +1663,339 @@ section {
   }
 }
 
+/* ========================================
+   FINAL FIXES — NAVIGATION / BUTTONS
+   GitHub Pages + HashRouter friendly
+======================================== */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.nav-link-button,
+.logo-button,
+.footer-top-button {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.logo-button {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #17211f;
+}
+
+.nav-link-button {
+  font-size: 13px;
+  font-weight: 500;
+  color: #59625f;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-link-button:hover {
+  color: #234f46;
+  transform: translateY(-1px);
+}
+
+.nav-link-button:focus-visible,
+.logo-button:focus-visible,
+.footer-top-button:focus-visible {
+  outline: 2px solid #234f46;
+  outline-offset: 5px;
+  border-radius: 3px;
+}
+
+/* Hero buttons may now be <button> elements */
+button.primary-btn,
+button.secondary-btn {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.footer-top-button {
+  font-size: inherit;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.footer-top-button:hover {
+  color: #234f46;
+}
+
+/* Scroll targets stay clear of the top navigation */
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+
+/* ========================================
+   FINAL FIXES — CASE STUDY SUPPORT CLASSES
+   Matches the latest ProjectCaseStudy.jsx
+======================================== */
+
+.case-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.case-hero-top .case-category {
+  margin-top: 0;
+  text-align: right;
+}
+
+.case-meta-item {
+  min-width: 0;
+}
+
+.case-cover-frame {
+  width: 100%;
+}
+
+/* Override the older .case-cover img rule when the image is
+   already inside a browser frame */
+.case-cover .browser-frame img {
+  width: 100%;
+  max-height: 700px;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+  border: 0;
+  border-radius: 0;
+}
+
+.browser-address {
+  margin-left: 10px;
+  padding: 5px 12px;
+  min-width: 120px;
+  max-width: 280px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  border: 1px solid #d7dad5;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.7);
+
+  font-size: 10px;
+  letter-spacing: 0.8px;
+  color: #7d8582;
+}
+
+.case-cover-caption {
+  margin-top: 22px;
+  padding: 0 4px;
+
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.case-cover-caption span {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #8b9390;
+}
+
+.case-cover-caption h3 {
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #1a2220;
+}
+
+.case-cover-caption > p {
+  max-width: 620px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #68706d;
+}
+
+.case-section-heading {
+  max-width: 760px;
+}
+
+.case-section-description {
+  max-width: 650px;
+  margin-top: 18px;
+
+  font-size: 15px;
+  line-height: 1.8;
+  color: #68706d;
+}
+
+.process-number,
+.shot-number {
+  font-variant-numeric: tabular-nums;
+}
+
+.case-shot figcaption {
+  align-items: flex-start;
+}
+
+.case-shot figcaption > div {
+  min-width: 0;
+}
+
+.case-shot figcaption h3 {
+  margin-bottom: 6px;
+
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #202725;
+}
+
+.case-shot figcaption p {
+  margin: 0;
+}
+
+.case-source {
+  margin-top: 32px;
+}
+
+.private-repo {
+  max-width: 560px;
+  padding: 22px 24px;
+
+  border: 1px solid #d6d9d4;
+  border-radius: 10px;
+
+  background: #f1f2ed;
+}
+
+.private-repo-label {
+  display: inline-flex;
+  margin-bottom: 10px;
+  padding: 7px 10px;
+
+  border: 1px solid #c8ceca;
+  border-radius: 30px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #52615d;
+}
+
+.private-repo p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.7;
+  color: #6a716f;
+}
+
+
+/* ========================================
+   FINAL FIXES — RESPONSIVE POLISH
+======================================== */
+
+@media (max-width: 800px) {
+  .case-hero-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .case-hero-top .case-category {
+    text-align: left;
+  }
+
+  .case-cover-caption {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .browser-address {
+    min-width: 80px;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav-links {
+    width: 100%;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .nav-link-button {
+    font-size: 13px;
+  }
+
+  .hero-buttons button.primary-btn,
+  .hero-buttons button.secondary-btn,
+  .hero-buttons a.primary-btn,
+  .hero-buttons a.secondary-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .navbar {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .nav-links {
+    gap: 14px 18px;
+  }
+
+  .nav-link-button {
+    font-size: 12px;
+  }
+
+  .browser-address {
+    display: none;
+  }
+
+  .case-next-inner {
+    padding: 38px 24px;
+  }
+}
+
+/* ========================================
+   HERO BUTTON NORMALIZATION
+======================================== */
+
+.hero-buttons button {
+  font-family: inherit;
+}
+
+button.primary-btn,
+button.secondary-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.hero-buttons .primary-btn,
+.hero-buttons .secondary-btn {
+  text-decoration: none;
+}
+
+@media (max-width: 700px) {
+  .hero-buttons .primary-btn,
+  .hero-buttons .secondary-btn {
+    width: 100%;
+  }
+}
