@@ -1999,3 +1999,64 @@ button.secondary-btn {
     width: 100%;
   }
 }
+
+/* ========================================
+   PORTFOLIO STATS
+======================================== */
+
+.portfolio-stats {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 45px 32px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  border-bottom: 1px solid #e5e5df;
+}
+
+.portfolio-stat {
+  padding: 10px 30px 10px 0;
+}
+
+.portfolio-stat + .portfolio-stat {
+  padding-left: 40px;
+  border-left: 1px solid #deded8;
+}
+
+.portfolio-stat span {
+  display: block;
+  margin-bottom: 12px;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+
+  color: #89918e;
+}
+
+.portfolio-stat p {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 500;
+
+  color: #234f46;
+}
+
+@media (max-width: 700px) {
+  .portfolio-stats {
+    padding: 35px 20px;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .portfolio-stat {
+    padding: 0;
+  }
+
+  .portfolio-stat + .portfolio-stat {
+    padding: 30px 0 0;
+    border-left: none;
+    border-top: 1px solid #deded8;
+  }
+}

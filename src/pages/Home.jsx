@@ -9,6 +9,8 @@ import misgsOutreachMap from "../assets/projects/misgs-outreach-map.png";
 // import misgSenaraiKelas from "./assets/projects/misgs-senarai-kelas.png";
 import hijabiStudent from "../assets/images/hijabi-student.png";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabase";
 
 function Home() {
   const dataSkills = [
@@ -39,6 +41,45 @@ function Home() {
       });
     }
   };
+
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const updateVisitorCount = async () => {
+      const { data, error } = await supabase.rpc("increment_portfolio_visits");
+
+      if (error) {
+        console.error("Visitor count error:", error);
+        return;
+      }
+
+      setVisitorCount(data);
+    };
+
+    updateVisitorCount();
+  }, []);
+
+  const formattedDate = currentTime.toLocaleDateString("en-MY", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+
+  const formattedTime = currentTime.toLocaleTimeString("en-MY", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+
+  const [visitorCount, setVisitorCount] = useState(null);
 
   return (
     <div className="app">
@@ -103,7 +144,7 @@ function Home() {
               and mobile application development.
             </p>
 
-           <div className="hero-buttons">
+            <div className="hero-buttons">
               <button
                 type="button"
                 className="primary-btn"
@@ -467,6 +508,28 @@ function Home() {
                 </a>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="portfolio-stats">
+          <div className="portfolio-stat">
+            <span>LOCAL DATE & TIME</span>
+
+            <p>
+              {formattedDate}
+              <br />
+              {formattedTime}
+            </p>
+          </div>
+
+          <div className="portfolio-stat">
+            <span>PORTFOLIO VISITS</span>
+
+            <p>
+              {visitorCount !== null
+                ? visitorCount.toLocaleString()
+                : "Loading..."}
+            </p>
           </div>
         </section>
 
